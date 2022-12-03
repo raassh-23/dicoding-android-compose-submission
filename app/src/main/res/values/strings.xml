@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Dicoding Compose Final</string>
+    <string name="app_name">NotMyAnimeList</string>
+    <string name="cover_image_description">Cover image of %1$s</string>
+    <string name="unknown">\???</string>
+    <string name="rating_content_description">Rating: %1$.2f</string>
+    <string name="total_episodes_content_description">Total episodes: %1$d</string>
+    <string name="total_episodes_content_description_unknown">Total episodes: Unknown</string>
 </resources>

@@ -30,4 +30,16 @@ class AnimeRepository {
 
         animeList[index] = animeList[index].copy(second = newStatus)
     }
+
+    companion object {
+        @Volatile
+        private var instance: AnimeRepository? = null
+
+        fun getInstance(): AnimeRepository =
+            instance ?: synchronized(this) {
+                AnimeRepository().apply {
+                    instance = this
+                }
+            }
+    }
 }
