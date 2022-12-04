@@ -5,4 +5,13 @@
     <string name="rating_content_description">Rating: %1$.2f</string>
     <string name="total_episodes_content_description">Total episodes: %1$d</string>
     <string name="total_episodes_content_description_unknown">Total episodes: Unknown</string>
+    <string name="about">About</string>
+    <string name="detail">Anime Detail</string>
+    <string name="about_content_description">about_page</string>
+    <string name="about_photo_content_description">Profile photo</string>
+    <string name="about_name">Muhammad Nur Abdurrauf</string>
+    <string name="about_email">muh.nur.abdurrauf@gmail.com</string>
+    <string name="github">Github</string>
+    <string name="linkedin">LinkedIn</string>
+    <string name="instagram">Instagram</string>
 </resources>

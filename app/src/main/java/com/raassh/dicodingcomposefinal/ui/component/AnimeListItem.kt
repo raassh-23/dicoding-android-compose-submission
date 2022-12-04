@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
@@ -68,7 +67,7 @@ fun AnimeListItem(
                     }
                     TextWithIcon(
                         icon = Icons.Default.Star,
-                        iconColorFilter = ColorFilter.tint(Color.White),
+                        iconTint = Color.White,
                         text = rating.toString(),
                         textStyle = MaterialTheme.typography.subtitle1.copy(color = Color.White),
                         modifier = Modifier.semantics(mergeDescendants = true) {
@@ -77,7 +76,7 @@ fun AnimeListItem(
                     )
                     TextWithIcon(
                         icon = Icons.Default.VideoLibrary,
-                        iconColorFilter = ColorFilter.tint(Color.White),
+                        iconTint = Color.White,
                         text = totalEpisodes?.toString() ?: stringResource(id = R.string.unknown),
                         textStyle = MaterialTheme.typography.subtitle1.copy(color = Color.White),
                         modifier = Modifier
