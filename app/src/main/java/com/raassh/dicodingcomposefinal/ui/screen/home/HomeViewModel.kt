@@ -1,5 +1,8 @@
 package com.raassh.dicodingcomposefinal.ui.screen.home
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.raassh.dicodingcomposefinal.data.AnimeRepository
@@ -16,9 +19,25 @@ class HomeViewModel(private val repository: AnimeRepository) : ViewModel() {
         MutableStateFlow(UiState.Loading)
     val uiState get() = _uiState.asStateFlow()
 
-    fun getAllAnime() {
+    private val _query = mutableStateOf("")
+    val query: State<String> get() = _query
+
+    private val _watchStatus: MutableState<WatchStatus?> = mutableStateOf(null)
+    val watchStatus: State<WatchStatus?> get() = _watchStatus
+
+    fun setQuery(newQuery: String) {
+        _query.value = newQuery
+        searchAnime()
+    }
+
+    fun setWatchStatus(status: WatchStatus?) {
+        _watchStatus.value = status
+        searchAnime()
+    }
+
+    fun searchAnime() {
         viewModelScope.launch {
-            repository.getAllAnime()
+            repository.searchAnime(_query.value, _watchStatus.value)
                 .catch { e ->
                     _uiState.value = UiState.Error(e.message.toString())
                 }

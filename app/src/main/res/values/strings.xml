@@ -14,4 +14,6 @@
     <string name="github">Github</string>
     <string name="linkedin">LinkedIn</string>
     <string name="instagram">Instagram</string>
+    <string name="back">Go back</string>
+    <string name="search_anime">Search anime by title</string>
 </resources>

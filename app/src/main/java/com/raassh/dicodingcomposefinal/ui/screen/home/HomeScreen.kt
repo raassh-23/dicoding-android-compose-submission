@@ -1,21 +1,15 @@
-package com.raassh.dicodingcomposefinal.ui.screen
+package com.raassh.dicodingcomposefinal.ui.screen.home
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.raassh.dicodingcomposefinal.data.model.Anime
 import com.raassh.dicodingcomposefinal.data.model.WatchStatus
 import com.raassh.dicodingcomposefinal.di.RepositoryInjection
-import com.raassh.dicodingcomposefinal.ui.component.AnimeListItem
-import com.raassh.dicodingcomposefinal.ui.screen.home.HomeViewModel
+import com.raassh.dicodingcomposefinal.ui.component.AnimeList
+import com.raassh.dicodingcomposefinal.ui.component.SearchBar
 import com.raassh.dicodingcomposefinal.ui.theme.DicodingComposeFinalTheme
 import com.raassh.dicodingcomposefinal.ui.utils.UiState
 import com.raassh.dicodingcomposefinal.ui.utils.ViewModelFactory
@@ -24,17 +18,19 @@ import com.raassh.dicodingcomposefinal.ui.utils.ViewModelFactory
 fun HomeScreen(
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
-        factory =ViewModelFactory(RepositoryInjection.provideAnimeRepository())
+        factory = ViewModelFactory(RepositoryInjection.provideAnimeRepository())
     )
 ) {
     viewModel.uiState.collectAsState(initial = UiState.Loading).value.let {
         when(it) {
             is UiState.Loading -> {
-                viewModel.getAllAnime()
+                viewModel.searchAnime()
             }
             is UiState.Success -> {
                 HomeContent(
                     animeList = it.data,
+                    query = viewModel.query.value,
+                    onQueryChange = viewModel::setQuery,
                     modifier = modifier
                 )
             }
@@ -49,24 +45,17 @@ fun HomeScreen(
 @Composable
 fun HomeContent(
     animeList: List<Pair<Anime, WatchStatus>>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navigateToDetail: (Long) -> Unit = {},
+    query: String = "",
+    watchStatus: WatchStatus? = null,
+    onQueryChange: (String) -> Unit = {}
 ) {
-    LazyVerticalGrid(
-        columns = GridCells.Adaptive(160.dp),
-        contentPadding = PaddingValues(16.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = modifier
-    ) {
-        items(animeList, key = { it.first.id }) { (anime, _) ->
-            AnimeListItem(
-                title = anime.title,
-                coverImageUrl = anime.coverImageUrl,
-                rating = anime.rating,
-                totalEpisodes = anime.totalEpisodes,
-                modifier = Modifier.aspectRatio(0.7f)
-            )
-        }
+    Column(modifier = modifier) {
+        SearchBar(query = query, onQueryChange = {
+            onQueryChange(it)
+        })
+        AnimeList(animeList = animeList, onAnimeClick = navigateToDetail)
     }
 }
 

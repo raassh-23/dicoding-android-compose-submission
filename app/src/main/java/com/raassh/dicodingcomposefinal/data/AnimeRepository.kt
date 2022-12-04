@@ -15,9 +15,17 @@ class AnimeRepository {
         anime.id == id
     }
 
-    fun getAnimeByStatus(filterStatus: WatchStatus) = animeList.filter { (_, status) ->
-        status == filterStatus
-    }
+    fun searchAnime(query: String, filterStatus: WatchStatus? = null) = flowOf(
+        animeList.filter { (anime, status) ->
+            (anime.title.contains(
+                query,
+                ignoreCase = true
+            ) || anime.translatedTitle?.contains(
+                query,
+                ignoreCase = true
+            ) == true) && (filterStatus == null || status == filterStatus)
+        }
+    )
 
     fun updateAnimeStatus(id: Long, newStatus: WatchStatus) {
         val index = animeList.indexOfFirst { (anime, _) ->

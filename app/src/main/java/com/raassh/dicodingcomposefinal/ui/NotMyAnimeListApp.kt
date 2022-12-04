@@ -3,8 +3,8 @@ package com.raassh.dicodingcomposefinal.ui
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -16,7 +16,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.raassh.dicodingcomposefinal.R
-import com.raassh.dicodingcomposefinal.ui.screen.HomeScreen
+import com.raassh.dicodingcomposefinal.ui.screen.home.HomeScreen
 import com.raassh.dicodingcomposefinal.ui.screen.about.AboutScreen
 import com.raassh.dicodingcomposefinal.ui.theme.DicodingComposeFinalTheme
 
@@ -32,7 +32,10 @@ fun NotMyAnimeListApp(
             Text(text = stringResource(id = Screen.titleFromRoute(currentRoute ?: "")))
         }, navigationIcon = if (currentRoute != Screen.Home.route) ({
             IconButton(onClick = { navController.navigateUp() }) {
-                Icon(Icons.Default.ArrowBack, contentDescription = null)
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = stringResource(R.string.back)
+                )
             }
         }) else null, actions = {
             if (currentRoute == Screen.Home.route) {
@@ -40,7 +43,7 @@ fun NotMyAnimeListApp(
                     navController.navigate(Screen.About.route)
                 }) {
                     Icon(
-                        imageVector = Icons.Default.AccountBox,
+                        imageVector = Icons.Default.Person,
                         contentDescription = stringResource(
                             R.string.about_content_description
                         )
