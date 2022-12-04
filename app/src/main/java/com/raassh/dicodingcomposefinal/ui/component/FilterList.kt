@@ -13,9 +13,9 @@ import com.raassh.dicodingcomposefinal.data.model.WatchStatus
 
 @Composable
 fun FilterList(
-    selected: WatchStatus,
+    selected: WatchStatus?,
     modifier: Modifier = Modifier,
-    onFilterClick: (WatchStatus) -> Unit = {},
+    onFilterClick: (WatchStatus?) -> Unit = {},
 ) {
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -27,7 +27,7 @@ fun FilterList(
                 filterName = stringResource(id = filter.resId),
                 isSelected = filter == selected,
                 modifier = Modifier.clickable {
-                    onFilterClick(filter)
+                    onFilterClick(if (filter == selected) null else filter)
                 }
             )
         }

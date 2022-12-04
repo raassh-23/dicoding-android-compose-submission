@@ -52,8 +52,8 @@ fun HomeScreen(
 fun HomeContent(
     animeList: List<Pair<Anime, WatchStatus>>,
     modifier: Modifier = Modifier,
-    watchStatus: WatchStatus,
-    onWatchStatusChange: (WatchStatus) -> Unit = {},
+    watchStatus: WatchStatus? = null,
+    onWatchStatusChange: (WatchStatus?) -> Unit = {},
     query: String = "",
     onQueryChange: (String) -> Unit = {},
     navigateToDetail: (Long) -> Unit = {},
