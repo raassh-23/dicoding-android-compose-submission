@@ -89,8 +89,6 @@ fun DetailContent(
     modifier: Modifier = Modifier,
     onSelectWatchStatus: (WatchStatus) -> Unit = {},
 ) {
-
-
     Column(
         modifier = modifier
             .verticalScroll(rememberScrollState())
@@ -129,7 +127,7 @@ fun DetailContent(
             contentScale = ContentScale.Crop
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Text(
             text = stringResource(R.string.watch_status),
@@ -140,9 +138,9 @@ fun DetailContent(
             stringResource(
                 id = it.resId
             )
-        }, onSelect = onSelectWatchStatus, modifier = Modifier.padding(top = 4.dp))
+        }, onSelect = onSelectWatchStatus, modifier = Modifier.padding(top = 8.dp))
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         val ratingDescription =
             stringResource(id = R.string.rating_content_description, rating)
@@ -216,7 +214,7 @@ fun DetailContent(
                 }
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Text(
             text = stringResource(R.string.synopsis),
@@ -234,7 +232,6 @@ fun DetailContent(
 @Composable
 fun DetailScreenPreview() {
     DicodingComposeFinalTheme {
-//        DetailScreen(animeId = 1)
         DetailContent(
             title = "Shingeki no Kyojin",
             translatedTitle = "Attack on Titan",

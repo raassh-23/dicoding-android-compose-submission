@@ -37,6 +37,14 @@ class AnimeRepository {
         animeList[index] = animeList[index].copy(second = newStatus)
     }
 
+    // for testing purpose
+    fun resetAnimeList() {
+        animeList.clear()
+        animeList.addAll(fakeAnimeList.map {
+            it to WatchStatus.UNTRACKED
+        })
+    }
+
     companion object {
         @Volatile
         private var instance: AnimeRepository? = null
