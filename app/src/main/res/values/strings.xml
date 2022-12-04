@@ -16,4 +16,11 @@
     <string name="instagram">Instagram</string>
     <string name="back">Go back</string>
     <string name="search_anime">Search anime by title</string>
+    <string name="untracked">Untracked</string>
+    <string name="watching">Watching</string>
+    <string name="completed">Completed</string>
+    <string name="on_hold">On Hold</string>
+    <string name="dropped">Dropped</string>
+    <string name="plan_to_watch">Plan to Watch</string>
+    <string name="empty_anime_list">No anime found</string>
 </resources>

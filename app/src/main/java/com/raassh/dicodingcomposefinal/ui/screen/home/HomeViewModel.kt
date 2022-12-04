@@ -1,6 +1,5 @@
 package com.raassh.dicodingcomposefinal.ui.screen.home
 
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -22,15 +21,15 @@ class HomeViewModel(private val repository: AnimeRepository) : ViewModel() {
     private val _query = mutableStateOf("")
     val query: State<String> get() = _query
 
-    private val _watchStatus: MutableState<WatchStatus?> = mutableStateOf(null)
-    val watchStatus: State<WatchStatus?> get() = _watchStatus
+    private val _watchStatus = mutableStateOf(WatchStatus.UNTRACKED)
+    val watchStatus: State<WatchStatus> get() = _watchStatus
 
     fun setQuery(newQuery: String) {
         _query.value = newQuery
         searchAnime()
     }
 
-    fun setWatchStatus(status: WatchStatus?) {
+    fun setWatchStatus(status: WatchStatus) {
         _watchStatus.value = status
         searchAnime()
     }

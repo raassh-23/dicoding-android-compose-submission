@@ -1,6 +1,6 @@
 package com.raassh.dicodingcomposefinal.data.model
 
-// top 20 most popular anime from myanimelist.net
+// top 25 most popular anime from myanimelist.net
 val fakeAnimeList = listOf(
     Anime(
         id = 1,

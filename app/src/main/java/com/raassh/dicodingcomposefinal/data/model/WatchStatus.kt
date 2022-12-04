@@ -1,10 +1,12 @@
 package com.raassh.dicodingcomposefinal.data.model
 
-enum class WatchStatus(name: String) {
-    UNTRACKED("Untracked"),
-    WATCHING("Watching"),
-    COMPLETED("Completed"),
-    ON_HOLD("On Hold"),
-    DROPPED("Dropped"),
-    PLAN_TO_WATCH("Plan To Watch")
+import com.raassh.dicodingcomposefinal.R
+
+enum class WatchStatus(val resId: Int) {
+    UNTRACKED(R.string.untracked),
+    WATCHING(R.string.watching),
+    COMPLETED(R.string.completed),
+    ON_HOLD(R.string.on_hold),
+    DROPPED(R.string.dropped),
+    PLAN_TO_WATCH(R.string.plan_to_watch)
 }
