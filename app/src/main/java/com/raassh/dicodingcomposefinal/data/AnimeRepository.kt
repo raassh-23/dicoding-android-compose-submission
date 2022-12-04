@@ -9,11 +9,9 @@ class AnimeRepository {
         it to WatchStatus.UNTRACKED
     }.toMutableList()
 
-    fun getAllAnime() = flowOf(animeList)
-
-    fun getAnimeById(id: Long) = animeList.first { (anime, _) ->
+    fun getAnimeById(id: Long) = flowOf(animeList.first { (anime, _) ->
         anime.id == id
-    }
+    })
 
     fun searchAnime(query: String, filterStatus: WatchStatus? = null) = flowOf(
         animeList.filter { (anime, status) ->

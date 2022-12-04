@@ -23,7 +23,8 @@ fun HomeScreen(
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = androidx.lifecycle.viewmodel.compose.viewModel(
         factory = ViewModelFactory(RepositoryInjection.provideAnimeRepository())
-    )
+    ),
+    navigateToDetail: (Long) -> Unit = {},
 ) {
     viewModel.uiState.collectAsState(initial = UiState.Loading).value.let {
         when (it) {
@@ -37,6 +38,7 @@ fun HomeScreen(
                     onQueryChange = viewModel::setQuery,
                     watchStatus = viewModel.watchStatus.value,
                     onWatchStatusChange = viewModel::setWatchStatus,
+                    navigateToDetail = navigateToDetail,
                     modifier = modifier
                 )
             }

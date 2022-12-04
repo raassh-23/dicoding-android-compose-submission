@@ -1,5 +1,6 @@
 package com.raassh.dicodingcomposefinal.ui.component
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
@@ -22,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.raassh.dicodingcomposefinal.R
 import com.raassh.dicodingcomposefinal.ui.theme.DicodingComposeFinalTheme
+import com.raassh.dicodingcomposefinal.ui.utils.withNumberingFormat
 
 @Composable
 fun AnimeListItem(
@@ -31,7 +33,10 @@ fun AnimeListItem(
     totalEpisodes: Int?,
     modifier: Modifier = Modifier,
 ) {
-    Card(modifier = modifier.fillMaxSize()) {
+    Card(
+        border = BorderStroke(2.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.5f)),
+        modifier = modifier.fillMaxSize()
+    ) {
         Box {
             AsyncImage(
                 model = coverImageUrl,
@@ -52,8 +57,9 @@ fun AnimeListItem(
                     ), maxLines = 2, overflow = TextOverflow.Ellipsis
                 )
                 Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
                     modifier = Modifier.padding(vertical = 4.dp),
-                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     val ratingDescription =
                         stringResource(id = R.string.rating_content_description, rating)
@@ -65,10 +71,11 @@ fun AnimeListItem(
                     } else {
                         stringResource(id = R.string.total_episodes_content_description_unknown)
                     }
+
                     TextWithIcon(
                         icon = Icons.Default.Star,
                         iconTint = Color.White,
-                        text = rating.toString(),
+                        text = rating.withNumberingFormat(),
                         textStyle = MaterialTheme.typography.subtitle1.copy(color = Color.White),
                         modifier = Modifier.semantics(mergeDescendants = true) {
                             contentDescription = ratingDescription
@@ -80,7 +87,6 @@ fun AnimeListItem(
                         text = totalEpisodes?.toString() ?: stringResource(id = R.string.unknown),
                         textStyle = MaterialTheme.typography.subtitle1.copy(color = Color.White),
                         modifier = Modifier
-                            .padding(start = 8.dp)
                             .semantics(mergeDescendants = true) {
                                 contentDescription = totalEpisodesDescription
                             }

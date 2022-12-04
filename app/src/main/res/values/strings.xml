@@ -5,7 +5,7 @@
     <string name="rating_content_description">Rating: %1$.2f</string>
     <string name="total_episodes_content_description">Total episodes: %1$d</string>
     <string name="total_episodes_content_description_unknown">Total episodes: Unknown</string>
-    <string name="about">About</string>
+    <string name="about">About Developer</string>
     <string name="detail">Anime Detail</string>
     <string name="about_content_description">about_page</string>
     <string name="about_photo_content_description">Profile photo</string>
@@ -24,4 +24,15 @@
     <string name="plan_to_watch">Plan to Watch</string>
     <string name="empty_anime_list">No anime found</string>
     <string name="scroll_to_top">Scroll to top</string>
+    <string name="episodes">%1$s episodes</string>
+    <string name="aired_tv">%1$s - %2$s</string>
+    <string name="aired_movie">%1$s</string>
+    <string name="present">Present</string>
+    <string name="aired_tv_date_content_description">Aired Date: from %1$s to %2$s</string>
+    <string name="aired_movie_date_content_description">Aired Date: %1$s</string>
+    <string name="information">Information</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="watch_status">Watching Status</string>
+    <string name="collapse">Collapse</string>
+    <string name="expand">Expand</string>
 </resources>
